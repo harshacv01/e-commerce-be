@@ -15,7 +15,17 @@ connectCloudinary();
 
 // middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:5174",
+      "https://ecommerce-frontend-eta.vercel.app",
+      "https://ecommerce-frontend-eta.vercel.app/",
+    ],
+    credentials: true,
+  }
+));
 
 // api endpoints
 app.use("/api/user", userRouter);
